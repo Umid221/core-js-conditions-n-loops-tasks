@@ -401,6 +401,7 @@ function getSpiralMatrix(size) {
  */
 
 function rotateMatrix(matrix) {
+  const newMatrix = matrix;
   const result = [];
   for (let i = 0; i < matrix.length; i += 1) {
     result[i] = [...matrix[i]];
@@ -413,7 +414,11 @@ function rotateMatrix(matrix) {
     }
   }
 
-  return result;
+  for (let i = 0; i < result.length; i += 1) {
+    newMatrix[i] = [...result[i]];
+  }
+
+  return newMatrix;
 }
 
 rotateMatrix([
@@ -472,8 +477,23 @@ function sortByAsc(arr) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let result = str;
+  let count = iterations;
+  while (count > 0) {
+    let end = '';
+    let start = '';
+    for (let i = 0; i < result.length; i += 1) {
+      if (i % 2 === 1) {
+        end += result[i];
+      } else {
+        start += result[i];
+      }
+    }
+    result = start + end;
+    count -= 1;
+  }
+  return result;
 }
 
 /**
