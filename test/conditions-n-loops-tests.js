@@ -428,7 +428,8 @@ describe('core-js-conditions-n-loops', () => {
         [8, 5, 2],
         [9, 6, 3],
       ];
-      assert.deepEqual(tasks.rotateMatrix(arr), result);
+      tasks.rotateMatrix(arr);
+      assert.deepEqual(arr, result);
       const min = -10;
       const max = 10;
       const matrixSize = 5;
@@ -439,7 +440,8 @@ describe('core-js-conditions-n-loops', () => {
           arr.push(line);
         }
         result = utility.getRotateMatrixUtil(arr);
-        assert.deepEqual(tasks.rotateMatrix(arr), result);
+        tasks.rotateMatrix(arr);
+        assert.deepEqual(arr, result);
       }
       assert.equal(
         forbidden.isCommented(tasks.rotateMatrix),
