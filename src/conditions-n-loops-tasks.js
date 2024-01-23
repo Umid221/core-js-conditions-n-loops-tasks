@@ -421,14 +421,6 @@ function rotateMatrix(matrix) {
   return newMatrix;
 }
 
-rotateMatrix([
-  [-8, 1, 6, 8, 10],
-  [-1, 9, -9, 10, 0],
-  [-4, -1, -6, -5, -4],
-  [5, 10, 8, -10, 3],
-  [-10, 0, -4, 6, 3],
-]);
-
 /**
  * Sorts an array of numbers in ascending order in place.
  * Employ any sorting algorithm of your choice.
@@ -513,8 +505,34 @@ function shuffleChar(str, iterations) {
  * @param {number} number The source number
  * @returns {number} The nearest larger number, or original number if none exists.
  */
-function getNearestBigger(/* number */) {
-  throw new Error('Not implemented');
+function getNearestBigger(number) {
+  const arr = Array.from(`${number}`);
+
+  for (let i = arr.length - 2; i >= 0; i -= 1) {
+    if (arr[i] < arr[i + 1]) {
+      let minIndex = i + 1;
+      for (let j = i + 2; j < arr.length; j += 1) {
+        if (arr[i] < arr[j] && arr[j] < arr[minIndex]) {
+          minIndex = j;
+        }
+      }
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+
+      for (let j = i + 2; j < arr.length; j += 1) {
+        const currentElement = arr[j];
+        let k = j - 1;
+        while (k >= i + 1 && arr[k] > currentElement) {
+          arr[k + 1] = arr[k];
+          k -= 1;
+        }
+
+        arr[k + 1] = currentElement;
+      }
+      return Number(arr.join(''));
+    }
+  }
+
+  return number;
 }
 
 module.exports = {
