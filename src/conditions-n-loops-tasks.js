@@ -473,6 +473,7 @@ function shuffleChar(str, iterations) {
   let result = str;
   let count = iterations;
   while (count > 0) {
+    count -= 1;
     let end = '';
     let start = '';
     for (let i = 0; i < result.length; i += 1) {
@@ -483,10 +484,45 @@ function shuffleChar(str, iterations) {
       }
     }
     result = start + end;
-    count -= 1;
+    if (result === str) {
+      return shuffleChar(str, iterations % (iterations - count));
+    }
   }
   return result;
 }
+
+shuffleChar('01', 170);
+shuffleChar('012', 170);
+shuffleChar('0123', 170);
+shuffleChar('01234', 170);
+shuffleChar('012345', 170);
+shuffleChar('0123456', 170);
+shuffleChar('01234567', 170);
+shuffleChar('012345678', 170);
+shuffleChar('0123456789', 170);
+shuffleChar('0123456789a', 170);
+shuffleChar('0123456789ab', 170);
+shuffleChar('0123456789abc', 170);
+shuffleChar('0123456789abcd', 170);
+shuffleChar('0123456789abcde', 170);
+shuffleChar('0123456789abcdef', 170);
+shuffleChar('0123456789abcdefg', 170);
+shuffleChar('0123456789abcdefgh', 170);
+shuffleChar('0123456789abcdefghi', 170);
+shuffleChar('0123456789abcdefghij', 170);
+shuffleChar('0123456789abcdefghijk', 170);
+shuffleChar('0123456789abcdefghijkl', 170);
+shuffleChar('0123456789abcdefghijklm', 170);
+shuffleChar('0123456789abcdefghijklmn', 170);
+shuffleChar('0123456789abcdefghijklmno', 170);
+shuffleChar('0123456789abcdefghijklmnop', 170);
+shuffleChar('0123456789abcdefghijklmnopq', 170);
+shuffleChar('0123456789abcdefghijklmnopqr', 170);
+shuffleChar('0123456789abcdefghijklmnopqrs', 170);
+shuffleChar('0123456789abcdefghijklmnopqrst', 170);
+shuffleChar('0123456789abcdefghijklmnopqrstu', 170);
+shuffleChar('0123456789abcdefghijklmnopqrstuv', 170);
+shuffleChar('0123456789abcdefghijklmnopqrstuvw', 170);
 
 /**
  * Returns the nearest largest integer consisting of the digits of the given positive integer.
